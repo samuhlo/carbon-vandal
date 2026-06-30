@@ -1,0 +1,92 @@
+# Carbon Vandal — btop theme
+# Background: Carbon #0C0011. Text: Concrete White #FAF3F0.
+# Focus: Industrial Yellow #FFCA40. Selection: Violeta Muteado #3A2347.
+# Inactive/structure: Structure Gray #737373.
+# Gradients are grouped by state family, not by hue palette.
+
+# Main background
+theme[main_bg]="#0C0011"
+
+# Main text color
+theme[main_fg]="#FAF3F0"
+
+# Title color for boxes
+theme[title]="#FFCA40"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#FFCA40"
+
+# Background color of selected items
+theme[selected_bg]="#3A2347"
+
+# Foreground color of selected items
+theme[selected_fg]="#FFCA40"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#737373"
+
+# Color of text appearing on top of graphs
+theme[graph_text]="#FAF3F0"
+
+# Misc colors for processes box
+theme[proc_misc]="#2EC4D6"
+
+# Cpu box outline color
+theme[cpu_box]="#3A2347"
+
+# Memory/disks box outline color
+theme[mem_box]="#3A2347"
+
+# Net up/down box outline color
+theme[net_box]="#3A2347"
+
+# Processes box outline color
+theme[proc_box]="#3A2347"
+
+# Box divider line and small boxes line color
+theme[div_line]="#737373"
+
+# Temperature gradient: success -> warning -> error
+theme[temp_start]="#8EFA8D"
+theme[temp_mid]="#FFCA40"
+theme[temp_end]="#E04C4C"
+
+# CPU gradient: cool -> load -> peak (cyan -> purple -> Industrial Yellow)
+theme[cpu_start]="#2EC4D6"
+theme[cpu_mid]="#B57EDC"
+theme[cpu_end]="#FFCA40"
+
+# Mem/Disk free meter (success tones: green/cyan/lime)
+theme[free_start]="#98B405"
+theme[free_mid]="#8EFA8D"
+theme[free_end]="#C8FF36"
+
+# Mem/Disk cached meter
+theme[cached_start]="#B57EDC"
+theme[cached_mid]="#C9A6E8"
+theme[cached_end]="#5FE0E8"
+
+# Mem/Disk available meter
+theme[available_start]="#98B405"
+theme[available_mid]="#2EC4D6"
+theme[available_end]="#C8FF36"
+
+# Mem/Disk used meter: growing -> hot -> critical
+theme[used_start]="#98B405"
+theme[used_mid]="#FFCA40"
+theme[used_end]="#E04C4C"
+
+# Download gradient (cool family: cyan tones)
+theme[download_start]="#2EC4D6"
+theme[download_mid]="#5FE0E8"
+theme[download_end]="#C9A6E8"
+
+# Upload gradient (warm family: purple -> coral -> orange)
+theme[upload_start]="#B57EDC"
+theme[upload_mid]="#FF6D6E"
+theme[upload_end]="#FFA64A"
+
+# Process box color gradient for threads, mem and cpu usage
+theme[process_start]="#B57EDC"
+theme[process_mid]="#FFA64A"
+theme[process_end]="#FF6D6E"
