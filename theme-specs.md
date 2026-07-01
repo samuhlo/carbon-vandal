@@ -1,7 +1,7 @@
 # Carbon Vándalo — Spec de colores (LazyVim + shell)
 
 Objetivo: aplicar este esquema de color a Neovim (LazyVim) y al resaltado del shell. Estética Dracula adaptada a la marca.
-Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cursiva* (en el editor), y el **amarillo solo en UI/sistema** (nunca en sintaxis).
+Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cursiva* (en el editor), y el **amarillo vive en UI/sistema y en sintaxis de function/call/method/constructor** (excepción explícita; nunca en strings, keywords, tipos o constantes/números).
 
 ## Paleta
 
@@ -14,13 +14,13 @@ Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cur
 | fg                   | `#FAF3F0` | texto/variables    |
 | comentario           | `#6E6288` | *italic*           |
 | invisibles           | `#737373` | indent, nontext, bordes |
-| **sistema (marca)**  | `#FFCA40` | amarillo, solo UI  |
+| **sistema (marca)**  | `#FFCA40` | amarillo, UI + function/call/method/constructor |
 | keyword              | `#FF99C8` | rosa               |
-| función / comando    | `#8EFA8D` | verde menta        |
+| función / comando    | `#FFCA40` | amarillo (excepción) |
 | tipo                 | `#B57EDC` | púrpura            |
-| string               | `#98B405` | verde oliva        |
+| string               | `#D4D97A` | lima suave         |
 | número/bool/const    | `#C8FF36` | lima               |
-| propiedad/param/flag | `#F5735A` | melocotón *italic* |
+| propiedad/param/flag | `#D99A6C` | mango pastel *italic* |
 | puntuación           | `#B9B2C4` | tenue              |
 | error                | `#E04C4C` | rojo coral         |
 | success              | `#8EFA8D` | verde menta        |
@@ -30,11 +30,11 @@ Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cur
 | Captures                                                                 | Color     | Estilo |
 | ------------------------------------------------------------------------ | --------- | ------ |
 | `@keyword`, `@keyword.*`, `@conditional`, `@repeat`, `@exception`, `@operator` | `#FF99C8` | —      |
-| `@function`, `@function.call`, `@function.method`, `@constructor`        | `#8EFA8D` | —      |
+| `@function`, `@function.call`, `@function.method`, `@constructor`        | `#FFCA40` | —      |
 | `@type`, `@type.builtin`, `@type.definition`, `@lsp.type.class/interface/enum` | `#B57EDC` | —      |
-| `@string`, `@string.*`, `@character`                                     | `#98B405` | —      |
+| `@string`, `@string.*`, `@character`                                     | `#D4D97A` | —      |
 | `@number`, `@boolean`, `@float`, `@constant`, `@constant.builtin`        | `#C8FF36` | —      |
-| `@property`, `@variable.member`, `@field`, `@variable.parameter`         | `#F5735A` | italic |
+| `@property`, `@variable.member`, `@field`, `@variable.parameter`         | `#D99A6C` | italic |
 | `@variable`                                                              | `#FAF3F0` | —      |
 | `@comment`                                                               | `#6E6288` | italic |
 | `@punctuation.*`                                                         | `#B9B2C4` | —      |

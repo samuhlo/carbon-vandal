@@ -7,8 +7,9 @@ return {
 			transparent = false,
 			on_colors = function(colors)
 				-- Carbon Vandal brand palette override.
-				-- Industrial Yellow (#FFCA40) is reserved for system/focus only;
-				-- syntax uses orange/purple/green/lime/coral/peach instead.
+				-- Industrial Yellow (#FFCA40) is the system/focus accent AND
+				-- paints function/call/method/constructor syntax (explicit exception);
+				-- other syntax uses pink/purple/lima/lima suave/mango pastel/coral.
 				-- [BLINDAJE] Cero cian frio y cero azul frio: variantes blue/cyan/teal
 				-- se reducen a verde menta (#8EFA8D) y purpura tipo (#B57EDC).
 				colors.bg = "#0C0011"
@@ -48,7 +49,8 @@ return {
 				-- [FOCUS] Industrial Yellow is the brand system accent.
 				-- Reserved for cursor, search, picker focus, lualine active mode,
 				-- active borders and warning diagnostics.
-				-- [GUARD] El amarillo nunca decora sintaxis: solo UI/system.
+				-- [GUARD] El amarillo vive en UI/system y en funciones (syntax);
+				-- nunca en strings, keywords, tipos o constantes/numeros.
 				local focus = "#FFCA40"
 				local carbon = "#0C0011"
 				local surface = "#1E1025"
@@ -58,7 +60,7 @@ return {
 				local text = "#FAF3F0"
 				local punctuation = "#B9B2C4"
 				local comment_italic = "#6E6288"
-				local property_italic = "#F5735A"
+				local property_italic = "#D99A6C"
 
 				-- Which-key popup
 				hl.WhichKeyNormal = { bg = surface }
@@ -88,7 +90,8 @@ return {
 				hl.Visual = { bg = selection }
 
 				-- [DATA] Capturas Treesitter y grupos legacy forzados segun theme-specs.md.
-				-- [GUARD] Amarillo (#FFCA40) reservado a UI/system; nunca a sintaxis.
+				-- [GUARD] Amarillo (#FFCA40) en UI/system + function/call/method/constructor;
+				-- jamas en strings, keywords, tipos o constantes/numeros.
 				-- Helper local: aplica la misma spec a varios grupos en una sola linea.
 				local function set(groups, spec)
 					for _, g in ipairs(groups) do
@@ -98,10 +101,10 @@ return {
 
 				-- Paleta de sintaxis (reutilizada en cada set).
 				local pink = "#FF99C8"
-				local green = "#8EFA8D"
+				local function_color = "#FFCA40"
 				local purple = "#B57EDC"
-				local olive = "#98B405"
-				local lime = "#C8FF36"
+				local string_color = "#D4D97A"
+				local number_color = "#C8FF36"
 				local prop = { fg = property_italic, italic = true }
 				local comment = { fg = comment_italic, italic = true }
 				local variable = { fg = text }
@@ -116,13 +119,14 @@ return {
 					"Keyword", "Conditional", "Repeat", "Exception", "Operator",
 				}, { fg = pink })
 
-				-- Function / call / method / constructor: verde menta.
+				-- Function / call / method / constructor: amarillo marca
+				-- (excepcion explicita: yellow tambien pinta sintaxis aqui).
 				set({
 					"@function", "@function.call", "@function.method",
 					"@function.method.call", "@function.builtin",
 					"@method", "@method.call", "@constructor",
 					"Function",
-				}, { fg = green })
+				}, { fg = function_color })
 
 				-- Type / class / interface / enum: purpura tipo.
 				set({
@@ -131,20 +135,20 @@ return {
 					"Type", "Structure", "Typedef",
 				}, { fg = purple })
 
-				-- String / char: verde oliva.
+				-- String / char: lima suave.
 				set({
 					"@string", "@string.special", "@string.regex", "@string.escape",
 					"@character",
 					"String", "Character",
-				}, { fg = olive })
+				}, { fg = string_color })
 
 				-- Number / bool / float / constant: lima.
 				set({
 					"@number", "@boolean", "@float", "@constant", "@constant.builtin",
 					"Number", "Boolean", "Float", "Constant",
-				}, { fg = lime })
+				}, { fg = number_color })
 
-				-- Property / field / param: melon italic.
+				-- Property / field / param: mango pastel italic.
 				set({
 					"@property", "@variable.member", "@field", "@variable.parameter",
 					"@lsp.type.property", "@lsp.type.parameter",
