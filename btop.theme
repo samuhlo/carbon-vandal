@@ -1,8 +1,11 @@
 # Carbon Vandal — btop theme
 # Background: Carbon #0C0011. Text: Concrete White #FAF3F0.
-# Focus: Industrial Yellow #FFCA40. Selection: Violeta Muteado #3A2347.
+# Focus: Industrial Yellow #FFCA40. Selection: Industrial Yellow #FFCA40 on Carbon text.
 # Inactive/structure: Structure Gray #737373.
 # Gradients are grouped by state family, not by hue palette.
+# [FIX] Selection and box outlines moved off muted purple so focus surfaces
+# stay yellow-first. Muted purple gradients replaced with brand colors
+# (cyan/orange/coral) to avoid Archwave leftovers.
 
 # Main background
 theme[main_bg]="#0C0011"
@@ -17,10 +20,10 @@ theme[title]="#FFCA40"
 theme[hi_fg]="#FFCA40"
 
 # Background color of selected items
-theme[selected_bg]="#3A2347"
+theme[selected_bg]="#FFCA40"
 
 # Foreground color of selected items
-theme[selected_fg]="#FFCA40"
+theme[selected_fg]="#0C0011"
 
 # Color of inactive/disabled text
 theme[inactive_fg]="#737373"
@@ -32,16 +35,16 @@ theme[graph_text]="#FAF3F0"
 theme[proc_misc]="#2EC4D6"
 
 # Cpu box outline color
-theme[cpu_box]="#3A2347"
+theme[cpu_box]="#FFCA40"
 
 # Memory/disks box outline color
-theme[mem_box]="#3A2347"
+theme[mem_box]="#FFCA40"
 
 # Net up/down box outline color
-theme[net_box]="#3A2347"
+theme[net_box]="#FFCA40"
 
 # Processes box outline color
-theme[proc_box]="#3A2347"
+theme[proc_box]="#FFCA40"
 
 # Box divider line and small boxes line color
 theme[div_line]="#737373"
@@ -51,9 +54,9 @@ theme[temp_start]="#8EFA8D"
 theme[temp_mid]="#FFCA40"
 theme[temp_end]="#E04C4C"
 
-# CPU gradient: cool -> load -> peak (cyan -> purple -> Industrial Yellow)
+# CPU gradient: cool -> load -> peak (cyan -> orange -> Industrial Yellow)
 theme[cpu_start]="#2EC4D6"
-theme[cpu_mid]="#B57EDC"
+theme[cpu_mid]="#FFA64A"
 theme[cpu_end]="#FFCA40"
 
 # Mem/Disk free meter (success tones: green/cyan/lime)
@@ -61,10 +64,10 @@ theme[free_start]="#98B405"
 theme[free_mid]="#8EFA8D"
 theme[free_end]="#C8FF36"
 
-# Mem/Disk cached meter
-theme[cached_start]="#B57EDC"
-theme[cached_mid]="#C9A6E8"
-theme[cached_end]="#5FE0E8"
+# Mem/Disk cached meter (cyan family)
+theme[cached_start]="#2EC4D6"
+theme[cached_mid]="#5FE0E8"
+theme[cached_end]="#C9A6E8"
 
 # Mem/Disk available meter
 theme[available_start]="#98B405"
@@ -81,12 +84,12 @@ theme[download_start]="#2EC4D6"
 theme[download_mid]="#5FE0E8"
 theme[download_end]="#C9A6E8"
 
-# Upload gradient (warm family: purple -> coral -> orange)
-theme[upload_start]="#B57EDC"
+# Upload gradient (warm family: orange -> coral)
+theme[upload_start]="#FFA64A"
 theme[upload_mid]="#FF6D6E"
 theme[upload_end]="#FFA64A"
 
 # Process box color gradient for threads, mem and cpu usage
-theme[process_start]="#B57EDC"
+theme[process_start]="#FF6D6E"
 theme[process_mid]="#FFA64A"
 theme[process_end]="#FF6D6E"

@@ -1,65 +1,98 @@
-# Carbon Vandal — Tema para Omarchy
+<div align="center">
+  <br />
+  <h1><code>./CARBON_VANDAL.sh</code></h1>
 
-Tema oscuro para Omarchy, construido sobre la identidad visual **Samuhlo — Carbon Vandal**:
+**ONE SURFACE. ONE ACCENT. ZERO NOISE.**
+<br />
 
-- **Carbon `#0C0011`** como fondo único de pantalla, terminales y superficies.
-- **Concrete White `#FAF3F0`** como texto base.
-- **Structure Gray `#737373`** para comentarios, invisibles y bordes inactivos.
-- **Industrial Yellow `#FFCA40`** como firma de sistema: cursor, foco, búsqueda, borde activo, statusline y warnings.
-- **Carbon Superficie `#1E1025`** y **Violeta Muteado `#3A2347`** para superficies elevadas y selección.
+[![Repo](https://img.shields.io/badge/REPO-samuhlo%2Fcarbon--vandal-FFCA40?style=for-the-badge&logo=github&logoColor=black)](https://github.com/samuhlo/carbon-vandal)
+[![Type](https://img.shields.io/badge/TYPE-OMARCHY_THEME-0C0011?style=for-the-badge&logoColor=FFCA40)](https://github.com/samuhlo/carbon-vandal)
+![Coverage](https://img.shields.io/badge/COVERAGE-FULL_DESKTOP-737373?style=for-the-badge)
 
-La paleta queda resumida abajo; el repositorio publicado funciona como tema Omarchy autónomo.
+  <br />
+</div>
 
-## Quick path — instalar en Omarchy
+___
 
-### Vía interfaz
+## // 00_ THE_MISSION
 
-1. Copia esta URL: `https://github.com/samuhlo/carbon-vandal`.
-2. Pulsa `SUPER + ALT + SPACE`.
-3. Click en **Install**.
-4. Click en **Style**.
-5. Click en **Theme**.
-6. Pega el enlace y pulsa **Enter**.
+**Carbon Vandal** is a dark Omarchy theme. One surface — `Carbon #0C0011` —, one accent — `Industrial Yellow #FFCA40` —, and the text in `Concrete White #FAF3F0`. Terminals, bar, compositor, notifications, editor and system panel share the same palette, so the desktop reads like one piece, not a patch per app.
 
-### Vía CLI
+The theme ships this way to land faster: few decisions, executed with discipline. The rest arrives in later iterations.
+
+> _note: when everything is the same color, the only signal that can mark focus is the accent. That is why `#FFCA40` does not decorate syntax — it is reserved. Any other use breaks the rule of the theme._
+
+___
+
+## // 01_ INSTALL
+
+Omarchy installs the theme from the **repository root**. One URL, one command.
 
 ```bash
 omarchy-theme-install https://github.com/samuhlo/carbon-vandal
 ```
 
-> Si usas un fork, sustituye la URL por la del fork. Omarchy instalará el tema desde la raíz del repositorio.
+If you work from a fork, swap the URL. The folder structure must stay exactly as it is — Omarchy reads the files directly from the root.
 
-## Qué cubre este tema
+To do it from the UI:
 
-| Capa | Archivos |
-| --- | --- |
-| Terminal | `alacritty.toml`, `kitty.conf`, `ghostty.conf` |
-| Escritorio / UI | `waybar.css`, `walker.css`, `mako.ini`, `swayosd.css`, `chromium.theme` |
-| Compositor / lock | `hyprland.conf`, `hyprlock.conf` |
-| Editor | `neovim.lua` (LazyVim + Tokyonight override) |
-| Sistema | `btop.theme`, `icons.theme` |
+1. Press `SUPER + ALT + SPACE`.
+2. **Install** → **Style** → **Theme**.
+3. Paste `https://github.com/samuhlo/carbon-vandal` and confirm with **Enter**.
 
-## Colores clave (referencia rápida)
+___
 
-| Rol | Hex |
-| --- | --- |
-| Fondo (Carbon) | `#0C0011` |
-| Superficie elevada | `#1E1025` |
-| Selección | `#3A2347` |
-| Texto base (Concrete White) | `#FAF3F0` |
-| Invisibles / estructura | `#737373` |
-| Acento de sistema (Industrial Yellow) | `#FFCA40` |
+## // 02_ THE_BLUEPRINT
 
-`#FFCA40` queda reservado a foco, cursor, búsqueda y elementos activos. **No** se usa como color genérico de sintaxis.
+| LAYER                | TECH                                                            | IMPLEMENTATION DETAIL                                                                 |
+| :------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| **Terminal**         | `alacritty.toml`, `kitty.conf`, `ghostty.conf`                  | Base palette only; no per-app overrides.                                              |
+| **Desktop / UI**     | `waybar.css`, `walker.css`, `mako.ini`, `swayosd.css`, `chromium.theme` | Flat Carbon background, single-accent highlights.                              |
+| **Compositor / Lock**| `hyprland.conf`, `hyprlock.conf`                                | Carbon fills, Industrial Yellow on the focus ring.                                    |
+| **Editor**           | `neovim.lua`                                                    | LazyVim + Tokyonight override: palette only, `#FFCA40` reserved for focus groups.     |
+| **System**           | `btop.theme`, `icons.theme`                                     | `btop` recoloured to the palette; `icons.theme` stays `Yaru-magenta` for compatibility. |
 
-## Fondo de pantalla
+LazyVim and Tokyonight are **preserved**: the override only applies the palette and limits `#FFCA40` to focus groups — cursor, search, picker, lualine in active mode, warnings, active border.
 
-Este tema **no incluye wallpapers**. La pantalla usa el Carbon `#0C0011` como fondo directo — negro profundo, sin imágenes.
+`icons.theme` points to `Yaru-magenta` for compatibility: renaming it to a fabricated theme can leave the bar without icons on systems that already load Yaru.
 
-Decisión consciente: el tema sale primero con fondo plano para acelerar la publicación. Los wallpapers propios vendrán en una iteración posterior.
+> _note: LazyVim ships Tokyonight. Instead of replacing it, the override paints over its palette. Same plugin graph, fewer surprises._
 
-## Notas
+___
 
-- `icons.theme` se mantiene en `Yaru-magenta` por compatibilidad con sistemas que ya lo tengan instalado; cambiar a un nombre inventado podría romper la carga de iconos.
-- `neovim.lua` preserva la integración LazyVim + Tokyonight y limita `#FFCA40` a grupos de foco (cursor, búsqueda, picker, lualine activo, warning, borde activo).
-- Los assets `logo.png`, `preview.png` y `preview/preview-*.png` siguen siendo placeholders del tema fuente `archwave/`. Se regenerarán en un cambio posterior; no afectan el tema funcional.
+## // 03_ PALETTE_PROTOCOL
+
+| ROLE                                  | HEX         | FUNCTION                                            |
+| :------------------------------------ | :---------- | :-------------------------------------------------- |
+| Background (Carbon)                   | `#0C0011`   | Screen, terminals, base surfaces.                   |
+| Elevated surface (Carbon Surface)     | `#1E1025`   | Floating panels, popovers.                          |
+| Selection                             | `#FFCA40`   | Active highlight, text selection, terminal selection. |
+| Base text (Concrete White)            | `#FAF3F0`   | All visible text.                                   |
+| Invisibles / structure (Structure Gray)| `#737373`  | Comments, inactive dividers.                        |
+| System accent (Industrial Yellow)     | `#FFCA40`   | Cursor, focus, search, active border, warnings.     |
+
+> _note: `#FFCA40` is not a syntax color. Its job is to **signal focus**. If you see it decorating anything else, it is misapplied._
+
+> _note: terminal ANSI green and ANSI blue slots in `alacritty.toml`, `kitty.conf` and `ghostty.conf` are intentionally remapped to `#FFCA40`. Omarchy startup logos, tmux selectors and several terminal UIs render focus through ANSI green/blue, so leaving those slots at the original olive/muted-purple hex makes the logo and selectors read green or purple instead of yellow. The bias is deliberate and limited to terminal palettes — desktop UI keeps the standard role separation._
+
+___
+
+## // 04_ EMPTY_ZONES
+
+These are **not** here, on purpose:
+
+- **No wallpapers.** The screen is `Carbon #0C0011`, flat and direct, no images. Custom wallpapers arrive in a later iteration; meanwhile, the desktop breathes with color.
+- **Logo and previews are placeholders.** `logo.png`, `preview.png`, and `preview/preview-*.png` are placeholders inherited from the source theme `archwave/`. They help visualize the repo tree, **not** the final look. They will be regenerated in a later change; they do not affect the functional theme.
+- **Real screenshots.** They arrive with the first visual validation round, when there is a desktop running the theme.
+
+___
+
+<div align="center">
+<br />
+
+<code>DESIGNED & CODED BY <a href='https://github.com/samuhlo'>samuhlo</a></code>
+
+<small>Lugo, Galicia</small>
+
+  <br />
+</div>

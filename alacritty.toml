@@ -3,12 +3,17 @@
 background = '#0C0011'
 foreground = '#FAF3F0'
 
+# ANSI green/blue are intentionally remapped to yellow brand surfaces.
+# Omarchy startup logos, tmux selectors and terminal UIs consume ANSI
+# green and ANSI blue slots to render focus, so they must read yellow,
+# not olive/green and not muted purple. [FIX] green/blue -> industrial yellow.
+
 [colors.normal]
 black   = "#1E1025"
 red     = "#E04C4C"
-green   = "#98B405"
+green   = "#FFCA40"
 yellow  = "#FFCA40"
-blue    = "#B57EDC"
+blue    = "#FFCA40"
 magenta = "#FF6D6E"
 cyan    = "#2EC4D6"
 white   = "#FAF3F0"
@@ -16,7 +21,7 @@ white   = "#FAF3F0"
 [colors.bright]
 black   = "#737373"
 red     = "#F5735A"
-green   = "#8EFA8D"
+green   = "#C8FF36"
 yellow  = "#C8FF36"
 blue    = "#C9A6E8"
 magenta = "#FF99C8"
@@ -28,5 +33,5 @@ text   = "#0C0011"
 cursor = "#FFCA40"
 
 [colors.selection]
-text = "#FAF3F0"
-background = "#3A2347"
+text = "#0C0011"
+background = "#FFCA40"
