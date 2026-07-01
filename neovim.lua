@@ -87,19 +87,83 @@ return {
 				hl.WinSeparator = { fg = win_separator }
 				hl.Visual = { bg = selection }
 
-				-- [DATA] Capturas Treesitter segun theme-specs.md.
-				-- Comentario en cursiva tenue; propiedad/param en cursiva melocoton;
-				-- puntuacion en gris tenue; el amarillo queda fuera de la sintaxis.
-				hl.Comment = { fg = comment_italic, italic = true }
-				hl["@comment"] = { fg = comment_italic, italic = true }
-				hl["@punctuation"] = { fg = punctuation }
-				hl["@punctuation.delimiter"] = { fg = punctuation }
-				hl["@punctuation.bracket"] = { fg = punctuation }
-				hl["@punctuation.special"] = { fg = punctuation }
-				hl["@property"] = { fg = property_italic, italic = true }
-				hl["@variable.parameter"] = { fg = property_italic, italic = true }
-				hl["@variable.member"] = { fg = property_italic, italic = true }
-				hl["@field"] = { fg = property_italic, italic = true }
+				-- [DATA] Capturas Treesitter y grupos legacy forzados segun theme-specs.md.
+				-- [GUARD] Amarillo (#FFCA40) reservado a UI/system; nunca a sintaxis.
+				-- Helper local: aplica la misma spec a varios grupos en una sola linea.
+				local function set(groups, spec)
+					for _, g in ipairs(groups) do
+						hl[g] = spec
+					end
+				end
+
+				-- Paleta de sintaxis (reutilizada en cada set).
+				local pink = "#FF99C8"
+				local green = "#8EFA8D"
+				local purple = "#B57EDC"
+				local olive = "#98B405"
+				local lime = "#C8FF36"
+				local prop = { fg = property_italic, italic = true }
+				local comment = { fg = comment_italic, italic = true }
+				local variable = { fg = text }
+				local punct = { fg = punctuation }
+
+				-- Keyword / control: rosa marca.
+				set({
+					"@keyword", "@keyword.return", "@keyword.function",
+					"@keyword.conditional", "@keyword.repeat", "@keyword.exception",
+					"@keyword.operator", "@keyword.import", "@keyword.coroutine",
+					"@conditional", "@repeat", "@exception", "@operator",
+					"Keyword", "Conditional", "Repeat", "Exception", "Operator",
+				}, { fg = pink })
+
+				-- Function / call / method / constructor: verde menta.
+				set({
+					"@function", "@function.call", "@function.method",
+					"@function.method.call", "@function.builtin",
+					"@method", "@method.call", "@constructor",
+					"Function",
+				}, { fg = green })
+
+				-- Type / class / interface / enum: purpura tipo.
+				set({
+					"@type", "@type.builtin", "@type.definition", "@type.qualifier",
+					"@lsp.type.class", "@lsp.type.interface", "@lsp.type.enum",
+					"Type", "Structure", "Typedef",
+				}, { fg = purple })
+
+				-- String / char: verde oliva.
+				set({
+					"@string", "@string.special", "@string.regex", "@string.escape",
+					"@character",
+					"String", "Character",
+				}, { fg = olive })
+
+				-- Number / bool / float / constant: lima.
+				set({
+					"@number", "@boolean", "@float", "@constant", "@constant.builtin",
+					"Number", "Boolean", "Float", "Constant",
+				}, { fg = lime })
+
+				-- Property / field / param: melon italic.
+				set({
+					"@property", "@variable.member", "@field", "@variable.parameter",
+					"@lsp.type.property", "@lsp.type.parameter",
+				}, prop)
+
+				-- Variable: blanco base + equivalente LSP util.
+				set({ "@variable", "@lsp.type.variable" }, variable)
+
+				-- Comment: tenue italic.
+				set({ "@comment", "Comment" }, comment)
+
+				-- Punctuation: gris tenue.
+				set({
+					"@punctuation", "@punctuation.delimiter", "@punctuation.bracket",
+					"@punctuation.special",
+				}, punct)
+
+				-- Identifier base: blanco, evita que fg_dark residual pinte identificadores legacy.
+				hl.Identifier = { fg = text }
 			end,
 		},
 		config = function(_, opts)
