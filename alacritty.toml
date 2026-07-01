@@ -3,30 +3,31 @@
 background = '#0C0011'
 foreground = '#FAF3F0'
 
-# ANSI green/blue are intentionally remapped to yellow brand surfaces.
-# Omarchy startup logos, tmux selectors and terminal UIs consume ANSI
-# green and ANSI blue slots to render focus, so they must read yellow,
-# not olive/green and not muted purple. [FIX] green/blue -> industrial yellow.
+# ANSI green/blue remap to Industrial Yellow (#FFCA40) so Omarchy startup
+# logos and tmux selectors — which read those slots — show the brand accent.
+# ANSI cyan slots (normal/bright) are remapped to function green (#8EFA8D)
+# to comply with the no-cold-cyan contract from theme-specs.md.
+# [FIX] green/blue -> yellow; cyan/lavender -> function green / type purple.
 
 [colors.normal]
-black   = "#1E1025"
-red     = "#E04C4C"
-green   = "#FFCA40"
-yellow  = "#FFCA40"
-blue    = "#FFCA40"
-magenta = "#FF6D6E"
-cyan    = "#2EC4D6"
-white   = "#FAF3F0"
+black   = "#1E1025"   # elevated surface
+red     = "#E04C4C"   # error
+green   = "#FFCA40"   # system accent (ANSI green -> yellow, selector focus)
+yellow  = "#FFCA40"   # system accent
+blue    = "#FFCA40"   # system accent (ANSI blue -> yellow, selector focus)
+magenta = "#FF99C8"   # keyword pink
+cyan    = "#8EFA8D"   # function/command/success (was cold cyan)
+white   = "#FAF3F0"   # foreground
 
 [colors.bright]
-black   = "#737373"
-red     = "#F5735A"
-green   = "#C8FF36"
-yellow  = "#C8FF36"
-blue    = "#C9A6E8"
-magenta = "#FF99C8"
-cyan    = "#5FE0E8"
-white   = "#FFFFFF"
+black   = "#737373"   # invisibles / structure
+red     = "#F5735A"   # property / param / flag
+green   = "#C8FF36"   # number / bool / const
+yellow  = "#C8FF36"   # number / bool / const
+blue    = "#B57EDC"   # type (was lavender)
+magenta = "#FF99C8"   # keyword pink
+cyan    = "#8EFA8D"   # function/command/success (was cold cyan)
+white   = "#FAF3F0"   # foreground (was pure white #FFFFFF)
 
 [colors.cursor]
 text   = "#0C0011"

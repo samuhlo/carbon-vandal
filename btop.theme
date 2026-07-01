@@ -4,8 +4,10 @@
 # Inactive/structure: Structure Gray #737373.
 # Gradients are grouped by state family, not by hue palette.
 # [FIX] Selection and box outlines moved off muted purple so focus surfaces
-# stay yellow-first. Muted purple gradients replaced with brand colors
-# (cyan/orange/coral) to avoid Archwave leftovers.
+# stay yellow-first. Cold cyan/blue gradient stops are remapped to
+# function green (#8EFA8D) and type purple (#B57EDC); orange stops are
+# remapped to peach (#F5735A); muted-red stops to keyword pink (#FF99C8).
+# All stops now live inside the Carbon Vandal palette (theme-specs.md).
 
 # Main background
 theme[main_bg]="#0C0011"
@@ -32,7 +34,7 @@ theme[inactive_fg]="#737373"
 theme[graph_text]="#FAF3F0"
 
 # Misc colors for processes box
-theme[proc_misc]="#2EC4D6"
+theme[proc_misc]="#737373"
 
 # Cpu box outline color
 theme[cpu_box]="#FFCA40"
@@ -54,24 +56,24 @@ theme[temp_start]="#8EFA8D"
 theme[temp_mid]="#FFCA40"
 theme[temp_end]="#E04C4C"
 
-# CPU gradient: cool -> load -> peak (cyan -> orange -> Industrial Yellow)
-theme[cpu_start]="#2EC4D6"
-theme[cpu_mid]="#FFA64A"
+# CPU gradient: cool -> load -> peak (function green -> peach -> yellow)
+theme[cpu_start]="#8EFA8D"
+theme[cpu_mid]="#F5735A"
 theme[cpu_end]="#FFCA40"
 
-# Mem/Disk free meter (success tones: green/cyan/lime)
+# Mem/Disk free meter (success tones: olive -> mint -> lime)
 theme[free_start]="#98B405"
 theme[free_mid]="#8EFA8D"
 theme[free_end]="#C8FF36"
 
-# Mem/Disk cached meter (cyan family)
-theme[cached_start]="#2EC4D6"
-theme[cached_mid]="#5FE0E8"
-theme[cached_end]="#C9A6E8"
+# Mem/Disk cached meter (cool family without cold blue: olive -> mint -> purple)
+theme[cached_start]="#98B405"
+theme[cached_mid]="#8EFA8D"
+theme[cached_end]="#B57EDC"
 
-# Mem/Disk available meter
+# Mem/Disk available meter (olive -> mint -> lime)
 theme[available_start]="#98B405"
-theme[available_mid]="#2EC4D6"
+theme[available_mid]="#8EFA8D"
 theme[available_end]="#C8FF36"
 
 # Mem/Disk used meter: growing -> hot -> critical
@@ -79,17 +81,17 @@ theme[used_start]="#98B405"
 theme[used_mid]="#FFCA40"
 theme[used_end]="#E04C4C"
 
-# Download gradient (cool family: cyan tones)
-theme[download_start]="#2EC4D6"
-theme[download_mid]="#5FE0E8"
-theme[download_end]="#C9A6E8"
+# Download gradient (cool family without cold blue: olive -> mint -> purple)
+theme[download_start]="#98B405"
+theme[download_mid]="#8EFA8D"
+theme[download_end]="#B57EDC"
 
-# Upload gradient (warm family: orange -> coral)
-theme[upload_start]="#FFA64A"
-theme[upload_mid]="#FF6D6E"
-theme[upload_end]="#FFA64A"
+# Upload gradient (warm family: peach -> pink -> peach)
+theme[upload_start]="#F5735A"
+theme[upload_mid]="#FF99C8"
+theme[upload_end]="#F5735A"
 
-# Process box color gradient for threads, mem and cpu usage
-theme[process_start]="#FF6D6E"
-theme[process_mid]="#FFA64A"
-theme[process_end]="#FF6D6E"
+# Process box color gradient for threads, mem and cpu usage (pink -> peach -> pink)
+theme[process_start]="#FF99C8"
+theme[process_mid]="#F5735A"
+theme[process_end]="#FF99C8"
