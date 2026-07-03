@@ -81,9 +81,21 @@ ___
 
 These are **not** here, on purpose:
 
-- **No wallpapers.** The screen is `Carbon #0C0011`, flat and direct, no images. Custom wallpapers arrive in a later iteration; meanwhile, the desktop breathes with color.
 - **Logo and previews are placeholders.** `logo.png`, `preview.png`, and `preview/preview-*.png` are placeholders inherited from the source theme `archwave/`. They help visualize the repo tree, **not** the final look. They will be regenerated in a later change; they do not affect the functional theme.
 - **Real screenshots.** They arrive with the first visual validation round, when there is a desktop running the theme.
+
+___
+
+## // 05_ WALLPAPERS
+
+The theme ships two wallpapers under `backgrounds/`:
+
+- `1-prior-art.png` — cassette patent drawing, high-contrast line art with a warm yellow spine.
+- `2-bunny-delay.png` — rabbit / audio-effect sketch, sparse strokes on a soft surface.
+
+Omarchy picks them up automatically from the theme root. Cycle them with `omarchy theme bg next` or the background selector at `SUPER + ALT + SPACE` → **Style** → **Background**.
+
+> _note: filenames are numbered so cycling follows a fixed order, not whatever order the filesystem happens to return._
 
 ___
 
