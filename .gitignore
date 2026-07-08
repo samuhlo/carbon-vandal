@@ -3,4 +3,5 @@
 # === Ein / Pi runtime (auto-gestionado, no editar) ===
 .pi/ein/
 .piagents/
+.pi-subagents/
 # === fin Ein / Pi runtime ===

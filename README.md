@@ -88,14 +88,29 @@ ___
 
 ## // 05_ WALLPAPERS
 
-The theme ships two wallpapers under `backgrounds/`:
+The theme ships four wallpapers under `backgrounds/`:
 
 - `1-prior-art.png` — cassette patent drawing, high-contrast line art with a warm yellow spine.
 - `2-bunny-delay.png` — rabbit / audio-effect sketch, sparse strokes on a soft surface.
+- `3-sea-rocks.png` — desaturated coastline, dark basalt against a pale, storm-washed sea.
+- `4-fog-mountain.png` — pine ridge dissolving into fog, high-contrast monochrome.
 
 Omarchy picks them up automatically from the theme root. Cycle them with `omarchy theme bg next` or the background selector at `SUPER + ALT + SPACE` → **Style** → **Background**.
 
 > _note: filenames are numbered so cycling follows a fixed order, not whatever order the filesystem happens to return._
+
+___
+
+## // 06_ COMPANION_TOOLS
+
+Want more than the four shipped wallpapers? **[omarchy-walls](https://github.com/samuhlo/omarchy-walls)** is a companion tool built in the same voice: a terminal wallpaper browser that streams 1,637 curated images into a floating window, live-previews them, and drops any pick straight into your active theme — no 3.7 GB clone required.
+
+```bash
+# browse and install wallpapers without leaving the terminal
+omarchy-walls
+```
+
+It is a **separate, optional tool** — Carbon Vandal works fully on its own. Pair them if you want a deeper wallpaper rotation.
 
 ___
 
