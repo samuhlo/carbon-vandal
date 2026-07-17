@@ -93,7 +93,7 @@ ___
 
 The theme ships one official wallpaper under `backgrounds/`:
 
-- `2-bunny-delay.png` — rabbit / audio-effect sketch, sparse strokes on a soft surface.
+- `bunny-delay-vandal.png` — rabbit / audio-effect sketch, sparse strokes on a soft surface, recoloured into the Carbon Vandal palette.
 
 Omarchy picks it up automatically from the theme root, and sets it on install. Want more variety? See [omarchy-walls](https://github.com/samuhlo/omarchy-walls) under `// 06_ RELATED_PROJECTS` below.
 
