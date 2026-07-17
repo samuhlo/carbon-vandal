@@ -73,10 +73,47 @@ return {
 				hl.StatusLine = { bg = surface, fg = text }
 				hl.StatusLineNC = { bg = carbon, fg = "#737373" }
 
-				-- Lualine
-				hl.lualine_a_normal = { bg = focus, fg = carbon }
-				hl.lualine_b_normal = { bg = surface, fg = text }
-				hl.lualine_c_normal = { bg = carbon, fg = "#B57EDC" }
+				-- Floating windows (file explorer, pickers, LSP hover, WhichKey):
+				-- a floating panel is inherently "in focus" while open, so its
+				-- border carries the accent instead of tokyonight's stock blue.
+				hl.FloatBorder = { fg = focus, bg = surface }
+
+				-- MiniIcons: tokyonight routes "Azure" through its raw `info`
+				-- color (a cold blue never touched by on_colors) and "Yellow"
+				-- straight through the system accent, which would leak the
+				-- focus color onto ordinary file-type icons. Both get pulled
+				-- back into the palette: Azure to type purple, Yellow to the
+				-- pastel mango already used for properties.
+				hl.MiniIconsAzure = { fg = purple }
+				hl.MiniIconsYellow = { fg = property_italic }
+
+				-- Bufferline's selected-buffer indicator and every git
+				-- change/add/delete surface (signs, diff, diagnostics) are
+				-- pinned to the roles theme-specs.md already documents:
+				-- change = accent, add = mint green, delete = error red.
+				hl.BufferLineIndicatorSelected = { fg = focus }
+				hl.GitSignsChange = { fg = focus }
+				hl.DiffChange = { fg = focus, bg = carbon }
+				hl.GitSignsAdd = { fg = "#8EFA8D" }
+				hl.DiffAdd = { fg = "#8EFA8D" }
+				hl.GitSignsDelete = { fg = "#E04C4C" }
+				hl.DiffDelete = { fg = "#E04C4C" }
+				hl.DiagnosticError = { fg = "#E04C4C" }
+				hl.DiagnosticInfo = { fg = purple }
+				hl.DiagnosticHint = { fg = "#737373" }
+				hl.DiagnosticOk = { fg = "#8EFA8D" }
+
+				-- Snacks dashboard (the LAZYVIM splash screen): the header and
+				-- footer stat numbers get the brand accent since this is a
+				-- chrome surface, not syntax-highlighted code; item
+				-- descriptions and icons stay neutral text so the accent
+				-- keeps reading as a single hero moment, not decoration.
+				hl.SnacksDashboardHeader = { fg = focus }
+				hl.SnacksDashboardTitle = { fg = focus }
+				hl.SnacksDashboardSpecial = { fg = focus }
+				hl.SnacksDashboardFooter = { fg = "#737373" }
+				hl.SnacksDashboardDesc = { fg = text }
+				hl.SnacksDashboardIcon = { fg = focus }
 
 				-- System accent: the surfaces where focus is signaled.
 				hl.Cursor = { fg = focus, bg = carbon }
@@ -185,6 +222,21 @@ return {
 			vim.api.nvim_set_hl(0, "SnacksPickerList", { bg = bg })
 			vim.api.nvim_set_hl(0, "SnacksPickerPreview", { bg = bg })
 			vim.api.nvim_set_hl(0, "SnacksPickerPrompt", { bg = bg })
+
+			-- mini.icons ships its own `ColorScheme` autocmd that re-links
+			-- MiniIconsAzure/MiniIconsYellow (to Function/DiagnosticWarn) on
+			-- every colorscheme event, which can fire after — and so win
+			-- over — the on_highlights override above. Re-assert on the
+			-- next tick, after every other ColorScheme callback (including
+			-- mini.icons') has already run, so ours always has the last word.
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = function()
+					vim.schedule(function()
+						vim.api.nvim_set_hl(0, "MiniIconsAzure", { fg = "#B57EDC" })
+						vim.api.nvim_set_hl(0, "MiniIconsYellow", { fg = "#D99A6C" })
+					end)
+				end,
+			})
 		end,
 	},
 	{
@@ -192,5 +244,45 @@ return {
 		opts = {
 			colorscheme = "tokyonight-moon",
 		},
+	},
+	{
+		-- Lualine builds its mode colors from its own internal call to
+		-- tokyonight's raw palette (bypassing on_colors/on_highlights
+		-- entirely), so the mode indicator has to be set here directly
+		-- instead of through highlight groups. Each mode keeps a distinct,
+		-- already-established Carbon Vandal role instead of introducing new
+		-- hues: Normal is the resting/focus state and gets the accent;
+		-- other modes borrow from the existing syntax palette.
+		"nvim-lualine/lualine.nvim",
+		opts = function(_, opts)
+			local carbon = "#0C0011"
+			local surface = "#1E1025"
+			local structure = "#737373"
+
+			local function mode(bg)
+				return {
+					a = { bg = bg, fg = carbon, gui = "bold" },
+					b = { bg = surface, fg = bg },
+				}
+			end
+
+			opts.options.theme = {
+				normal = {
+					a = { bg = "#FFCA40", fg = carbon, gui = "bold" }, -- accent: resting state
+					b = { bg = surface, fg = "#FAF3F0" },
+					c = { bg = carbon, fg = "#FAF3F0" },
+				},
+				insert = mode("#8EFA8D"), -- mint green: adding
+				visual = mode("#FF99C8"), -- keyword pink: selecting
+				replace = mode("#E04C4C"), -- error red: overwriting
+				command = mode("#B57EDC"), -- type purple: directing
+				terminal = mode("#C8FF36"), -- lime: shelled out
+				inactive = {
+					a = { bg = surface, fg = structure },
+					b = { bg = surface, fg = structure },
+					c = { bg = carbon, fg = structure },
+				},
+			}
+		end,
 	},
 }
