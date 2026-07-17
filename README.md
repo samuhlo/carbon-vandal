@@ -10,6 +10,26 @@
 [![License](https://img.shields.io/badge/LICENSE-MIT-737373?style=for-the-badge)](LICENSE)
 
   <br />
+
+  <img src="preview.png" alt="Carbon Vandal desktop — btop, fastfetch and neovim tiled on Hyprland, one palette across everything" width="100%" />
+  <sub><code>btop · fastfetch · neovim (LazyVim) — captured live on Hyprland, 3440x1440</code></sub>
+
+  <br />
+  <br />
+
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="preview/launcher.png" alt="Walker launcher and mako notification over the tiled desktop" width="100%" />
+        <div align="center"><sub><code>walker + mako — the accent only marks focus</code></sub></div>
+      </td>
+      <td width="50%">
+        <img src="preview-unlock.png" alt="Hyprlock screen — blurred desktop behind the password field, Industrial Yellow border" width="100%" />
+        <div align="center"><sub><code>hyprlock — Carbon surface, Industrial Yellow frame</code></sub></div>
+      </td>
+    </tr>
+  </table>
+
 </div>
 
 ___
@@ -82,9 +102,9 @@ ___
 
 ## // 04_ EMPTY_ZONES
 
-These are **not** here, on purpose:
+What ships and what doesn't, on purpose:
 
-- **No `preview.png`, `preview-unlock.png`, or `unlock.png`.** Every stock Omarchy theme ships these for the in-app theme picker's thumbnail. Carbon Vandal doesn't have them yet — the theme installs and works fully without them (`omarchy-theme-install` never requires them), but the picker will show no preview until they're added.
+- **`preview.png`, `preview-unlock.png` and `unlock.png` are included.** The first two feed the in-app theme picker's thumbnails — both are real captures of a live session, not mockups. `unlock.png` is the brand mark Omarchy hands to Plymouth for the boot/disk-unlock screen (`omarchy-plymouth-set-by-theme`).
 - **No `vscode.json`.** Every stock theme maps to a real, published VS Code marketplace extension with a matching palette. There is no such extension for Carbon Vandal yet, so VS Code/VSCodium/Cursor simply keep whatever theme they already have when Carbon Vandal is applied, instead of switching automatically.
 
 ___
