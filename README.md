@@ -91,16 +91,11 @@ ___
 
 ## // 05_ WALLPAPERS
 
-The theme ships four wallpapers under `backgrounds/`:
+The theme ships one official wallpaper under `backgrounds/`:
 
-- `1-prior-art.png` — cassette patent drawing, high-contrast line art with a warm yellow spine.
 - `2-bunny-delay.png` — rabbit / audio-effect sketch, sparse strokes on a soft surface.
-- `3-sea-rocks.png` — desaturated coastline, dark basalt against a pale, storm-washed sea.
-- `4-fog-mountain.png` — pine ridge dissolving into fog, high-contrast monochrome.
 
-Omarchy picks them up automatically from the theme root. Cycle them with `omarchy theme bg next` or the background selector at `SUPER + ALT + SPACE` → **Style** → **Background**.
-
-> _note: filenames are numbered so cycling follows a fixed order, not whatever order the filesystem happens to return._
+Omarchy picks it up automatically from the theme root, and sets it on install. Want more variety? See [omarchy-walls](https://github.com/samuhlo/omarchy-walls) under `// 06_ RELATED_PROJECTS` below.
 
 ___
 
