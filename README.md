@@ -5,9 +5,9 @@
 **ONE SURFACE. ONE ACCENT. ZERO NOISE.**
 <br />
 
-[![Repo](https://img.shields.io/badge/REPO-samuhlo%2Fomarchy--carbon--vandal--theme-FFCA40?style=for-the-badge&logo=github&logoColor=black)](https://github.com/samuhlo/omarchy-carbon-vandal-theme)
 [![Type](https://img.shields.io/badge/TYPE-OMARCHY_THEME-0C0011?style=for-the-badge&logoColor=FFCA40)](https://github.com/samuhlo/omarchy-carbon-vandal-theme)
-![Coverage](https://img.shields.io/badge/COVERAGE-FULL_DESKTOP-737373?style=for-the-badge)
+![Coverage](https://img.shields.io/badge/COVERAGE-FULL_DESKTOP-FFCA40?style=for-the-badge)
+[![License](https://img.shields.io/badge/LICENSE-MIT-737373?style=for-the-badge)](LICENSE)
 
   <br />
 </div>
@@ -104,16 +104,26 @@ Omarchy picks them up automatically from the theme root. Cycle them with `omarch
 
 ___
 
-## // 06_ COMPANION_TOOLS
+## // 06_ RELATED_PROJECTS
 
-Want more than the four shipped wallpapers? **[omarchy-walls](https://github.com/samuhlo/omarchy-walls)** is a companion tool built in the same voice: a terminal wallpaper browser that streams 1,637 curated images into a floating window, live-previews them, and drops any pick straight into your active theme — no 3.7 GB clone required.
+Other tools by the same author, built in the same voice. Both are **separate, optional** — Carbon Vandal works fully on its own.
 
-```bash
-# browse and install wallpapers without leaving the terminal
-omarchy-walls
-```
+- **[omarchy-walls](https://github.com/samuhlo/omarchy-walls)** — a terminal wallpaper browser that streams 1,637 curated images into a floating window, live-previews them, and drops any pick straight into your active theme. No 3.7 GB clone required.
 
-It is a **separate, optional tool** — Carbon Vandal works fully on its own. Pair them if you want a deeper wallpaper rotation.
+  ```bash
+  # browse and install wallpapers without leaving the terminal
+  omarchy-walls
+  ```
+
+- **[lazysubs-eye](https://github.com/samuhlo/lazysubs-eye)** — an AI subscription quota monitor for Omarchy: live usage windows for Claude Code, Codex and MiniMax in Waybar and an adaptive TUI, plus local token history.
+
+___
+
+## // 07_ EXTRAS
+
+Carbon Vandal's palette also themes apps outside Omarchy's templating pipeline — they have no `.tpl` file, so `omarchy theme set` never touches them. These live under `extras/` as reference snippets to copy manually, not files Omarchy applies for you.
+
+- **[extras/herdr.toml](extras/herdr.toml)** — the `[theme]`/`[theme.custom]` block for Herdr, a personal multi-agent terminal orchestrator (not yet published). Copy it into `~/.config/herdr/config.toml`.
 
 ___
 

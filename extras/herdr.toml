@@ -1,0 +1,31 @@
+# Carbon Vandal — Herdr theme snippet.
+#
+# Herdr (github.com/samuhlo — a personal multi-agent terminal orchestrator)
+# is not part of Omarchy's theming pipeline: it has no `.tpl` template, so
+# `omarchy theme set` never touches it. This file is a manual reference,
+# not something Omarchy reads automatically — copy the `[theme]` block
+# below into your own `~/.config/herdr/config.toml`.
+#
+# Herdr's theme system starts from a built-in base ("catppuccin") and
+# lets `[theme.custom]` override individual tokens. Every token here maps
+# 1:1 to a role in theme-specs.md, so this stays in sync with the rest of
+# Carbon Vandal by construction.
+
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[theme.custom]
+panel_bg    = "#1E1025"  # elevated surface (panels)
+accent      = "#FFCA40"  # industrial yellow (brand)
+surface0    = "#1E1025"  # elevated surface
+surface1    = "#3A2347"  # selection
+surface_dim = "#170A1F"  # current line
+overlay0    = "#6E6288"  # comments
+overlay1    = "#737373"  # invisibles / borders
+subtext0    = "#B9B2C4"  # dim punctuation
+red         = "#E04C4C"  # error
+green       = "#8EFA8D"  # success / mint green
+yellow      = "#FFCA40"  # system accent
+peach       = "#D99A6C"  # property / param
+mauve       = "#B57EDC"  # type purple
