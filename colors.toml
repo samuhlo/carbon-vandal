@@ -1,0 +1,46 @@
+# Carbon Vandal — canonical palette.
+#
+# Omarchy reads this file to auto-generate theming for every app that does
+# not have a hand-written override in this repo: foot, helix, obsidian,
+# the gum CLI prompts, the hyprland screenshot share picker, and RGB
+# keyboard lighting. Apps that DO have a static file in this repo
+# (alacritty.toml, kitty.conf, ghostty.conf, hyprland.conf, hyprlock.conf,
+# walker.css, waybar.css, mako.ini, swayosd.css, chromium.theme,
+# btop.theme) keep using that file — Omarchy's template generator never
+# overwrites a file that already exists in the theme directory.
+#
+# `accent` is the single system/focus color (Industrial Yellow). Every
+# other role mirrors the values already used across the hand-written
+# per-app configs, so nothing themed from this file will look out of
+# place next to them.
+
+accent = "#FFCA40"
+cursor = "#FFCA40"
+foreground = "#FAF3F0"
+background = "#0C0011"
+selection_foreground = "#0C0011"
+selection_background = "#FFCA40"
+
+# ANSI 0-7 (normal) and 8-15 (bright). Green and blue (2, 4, 10 via
+# yellow overlap) are intentionally remapped to Industrial Yellow, and
+# cyan (6, 14) to function green — see theme-specs.md for the full
+# rationale: several terminal UIs (Omarchy startup logo, tmux selectors)
+# render focus through ANSI green/blue/cyan, so leaving them at a cold
+# hue would make those surfaces read the wrong color.
+color0 = "#1E1025"   # elevated surface
+color1 = "#E04C4C"   # error
+color2 = "#FFCA40"   # system accent
+color3 = "#FFCA40"   # system accent
+color4 = "#FFCA40"   # system accent
+color5 = "#FF99C8"   # keyword pink
+color6 = "#8EFA8D"   # function / success green
+color7 = "#FAF3F0"   # foreground
+
+color8 = "#737373"    # structure gray
+color9 = "#F5735A"    # property / param / flag
+color10 = "#C8FF36"   # number / bool / const
+color11 = "#C8FF36"   # number / bool / const
+color12 = "#B57EDC"   # type purple
+color13 = "#FF99C8"   # keyword pink
+color14 = "#8EFA8D"   # function / success green
+color15 = "#FAF3F0"   # foreground

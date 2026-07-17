@@ -1,7 +1,7 @@
 *.sync-conflict*
 
-# === Ein / Pi runtime (auto-gestionado, no editar) ===
+# === Ein / Pi runtime (auto-managed, do not edit) ===
 .pi/ein/
 .piagents/
 .pi-subagents/
-# === fin Ein / Pi runtime ===
+# === end Ein / Pi runtime ===

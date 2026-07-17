@@ -1,3 +1,9 @@
+/* Carbon Vandal — SwayOSD (volume/brightness/caps-lock on-screen display).
+ * Elevated surface background, Industrial Yellow border and progress
+ * fill so the OSD reads as the same focus signal used everywhere else.
+ * `image` uses type purple instead of the accent so icons don't compete
+ * with the progress bar for attention.
+ */
 @define-color background-color #1E1025;
 @define-color border-color #FFCA40;
 @define-color label #FAF3F0;

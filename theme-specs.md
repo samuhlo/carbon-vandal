@@ -1,33 +1,39 @@
-# Carbon Vándalo — Spec de colores (LazyVim + shell)
+# Carbon Vandal — color spec (LazyVim + shell)
 
-Objetivo: aplicar este esquema de color a Neovim (LazyVim) y al resaltado del shell. Estética Dracula adaptada a la marca.
-Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cursiva* (en el editor), y el **amarillo vive en UI/sistema y en sintaxis de function/call/method/constructor** (excepción explícita; nunca en strings, keywords, tipos o constantes/números).
+This document is the source of truth for the syntax and shell-highlighting
+roles applied across the theme. It is a Dracula-style layout adapted to the
+Carbon Vandal brand.
 
-## Paleta
+Hard rules: **zero cyan and zero cold blue**, comments and parameters are
+*italic* (in the editor), and **yellow lives in UI/system chrome and in
+function/call/method/constructor syntax** — an explicit exception. It never
+appears in strings, keywords, types, or constants/numbers.
 
-| Rol                  | Hex       | Notas              |
-| -------------------- | --------- | ------------------ |
-| bg                   | `#0C0011` | fondo principal    |
-| bg_elevado           | `#1E1025` | floats, panel, pmenu |
-| línea_actual         | `#170A1F` | CursorLine         |
-| selección            | `#3A2347` | Visual             |
-| fg                   | `#FAF3F0` | texto/variables    |
-| comentario           | `#6E6288` | *italic*           |
-| invisibles           | `#737373` | indent, nontext, bordes |
-| **sistema (marca)**  | `#FFCA40` | amarillo, UI + function/call/method/constructor |
-| keyword              | `#FF99C8` | rosa               |
-| función / comando    | `#FFCA40` | amarillo (excepción) |
-| tipo                 | `#B57EDC` | púrpura            |
-| string               | `#D4D97A` | lima suave         |
-| número/bool/const    | `#C8FF36` | lima               |
-| propiedad/param/flag | `#D99A6C` | mango pastel *italic* |
-| puntuación           | `#B9B2C4` | tenue              |
-| error                | `#E04C4C` | rojo coral         |
-| success              | `#8EFA8D` | verde menta        |
+## Palette
 
-## Sintaxis LazyVim (Treesitter `@` captures)
+| Role                    | Hex       | Notes                    |
+| ------------------------ | --------- | ------------------------- |
+| bg                       | `#0C0011` | primary background        |
+| bg_elevated              | `#1E1025` | floats, panels, pmenu      |
+| current line             | `#170A1F` | CursorLine                |
+| selection                | `#3A2347` | Visual                    |
+| fg                       | `#FAF3F0` | text / variables          |
+| comment                  | `#6E6288` | *italic*                  |
+| invisibles               | `#737373` | indent, nontext, borders  |
+| **system (brand)**       | `#FFCA40` | yellow — UI + function/call/method/constructor |
+| keyword                  | `#FF99C8` | pink                      |
+| function / call          | `#FFCA40` | yellow (exception)        |
+| type                     | `#B57EDC` | purple                    |
+| string                   | `#D4D97A` | soft lime                 |
+| number / bool / const    | `#C8FF36` | lime                      |
+| property / param / flag  | `#D99A6C` | pastel mango, *italic*    |
+| punctuation              | `#B9B2C4` | muted                     |
+| error                    | `#E04C4C` | coral red                 |
+| success                  | `#8EFA8D` | mint green                |
 
-| Captures                                                                 | Color     | Estilo |
+## LazyVim syntax (Treesitter `@` captures)
+
+| Captures                                                                 | Color     | Style  |
 | ------------------------------------------------------------------------ | --------- | ------ |
 | `@keyword`, `@keyword.*`, `@conditional`, `@repeat`, `@exception`, `@operator` | `#FF99C8` | —      |
 | `@function`, `@function.call`, `@function.method`, `@constructor`        | `#FFCA40` | —      |
@@ -39,9 +45,9 @@ Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cur
 | `@comment`                                                               | `#6E6288` | italic |
 | `@punctuation.*`                                                         | `#B9B2C4` | —      |
 
-## UI / Sistema LazyVim (el amarillo vive aquí)
+## LazyVim UI / system (this is where yellow lives)
 
-| Grupo                        | fg / bg                        |
+| Group                        | fg / bg                        |
 | ---------------------------- | ------------------------------ |
 | `Normal`                     | fg `#FAF3F0` / bg `#0C0011`     |
 | `NormalFloat`, `Pmenu`       | fg `#FAF3F0` / bg `#1E1025`     |
@@ -51,14 +57,14 @@ Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cur
 | `Cursor`, `TermCursor`       | bg `#FFCA40`                   |
 | `Visual`                     | bg `#3A2347`                   |
 | `Search`, `IncSearch`, `CurSearch` | fg `#0C0011` / bg `#FFCA40` |
-| `MatchParen`                 | fg `#FFCA40` (bold)           |
+| `MatchParen`                 | fg `#FFCA40` (bold)            |
 | `PmenuSel`, `TelescopeSelection` | fg `#FFCA40` / bg `#1E1025` |
-| `Title`, branch/modo activo statusline | fg `#FFCA40`         |
+| `Title`, active branch/mode in statusline | fg `#FFCA40`       |
 | `WinSeparator`               | fg `#2A1E33`                   |
 
-## Diagnósticos y Git
+## Diagnostics and Git
 
-| Grupo                                   | Color     |
+| Group                                   | Color     |
 | --------------------------------------- | --------- |
 | `DiagnosticError`, `DiffDelete`, `GitSignsDelete` | `#E04C4C` |
 | `DiagnosticWarn`, `DiffChange`, `GitSignsChange`  | `#FFCA40` |
@@ -66,22 +72,24 @@ Reglas duras: **cero cian y cero azul frío**, comentarios y parámetros en *cur
 | `DiagnosticHint`                        | `#737373` |
 | `DiagnosticOk`, `DiffAdd`, `GitSignsAdd`| `#8EFA8D` |
 
-## Terminal / Shell (el azul de `z`, `gh`…)
+## Terminal / shell (the blue in `z`, `gh`, …)
 
-Ese azul de los argumentos **no es Neovim ni el palette ANSI**: es el resaltado de sintaxis del shell. Se cambia en la config del shell.
+That blue you see highlighting command arguments is **not** Neovim and
+**not** the ANSI palette — it's the shell's own syntax highlighting
+(fish/zsh), configured separately from the terminal emulator.
 
-| Rol shell                    | Color            |
-| ---------------------------- | ---------------- |
-| comando (verbo)              | `#8EFA8D` (bold) |
-| argumento / param (el azul)  | `#FAF3F0`        |
-| opción / flag (`--x`)        | `#F5735A`        |
-| string / comillas            | `#98B405`        |
-| operador / redirección       | `#FF99C8`        |
-| autosuggestion (ghost)       | `#6E6288`        |
-| error                        | `#E04C4C`        |
-| comentario                   | `#6E6288`        |
+| Shell role                   | Color            |
+| ----------------------------- | ---------------- |
+| command (verb)                | `#8EFA8D` (bold) |
+| argument / param (the blue)   | `#FAF3F0`        |
+| option / flag (`--x`)         | `#F5735A`        |
+| string / quotes               | `#98B405`        |
+| operator / redirection        | `#FF99C8`        |
+| autosuggestion (ghost text)   | `#6E6288`        |
+| error                         | `#E04C4C`        |
+| comment                       | `#6E6288`        |
 
-**fish** (`~/.config/fish/config.fish` o un archivo en `conf.d/`):
+**fish** (`~/.config/fish/config.fish` or a file under `conf.d/`):
 
 ```fish
 set -g fish_color_command 8EFA8D --bold
@@ -96,7 +104,8 @@ set -g fish_color_comment 6E6288
 set -g fish_color_end FF99C8
 ```
 
-**zsh** (zsh-syntax-highlighting + zsh-autosuggestions, en `.zshrc` tras cargar los plugins):
+**zsh** (zsh-syntax-highlighting + zsh-autosuggestions, in `.zshrc` after
+the plugins load):
 
 ```zsh
 ZSH_HIGHLIGHT_STYLES[command]='fg=#8EFA8D,bold'
@@ -113,9 +122,16 @@ ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#E04C4C'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6E6288'
 ```
 
-> Nota: fish usa el hex **sin** `#`; zsh lo usa **con** `#`.
+> Note: fish uses hex codes **without** `#`; zsh uses them **with** `#`.
 
-## Implementación sugerida
+## Implementation notes
 
-- **LazyVim**: archivo Lua que fije los grupos con `vim.api.nvim_set_hl(0, "<grupo>", { fg = "#...", bg = "#...", italic = true })`, cargado tras el colorscheme base (autocmd `ColorScheme` o al final de la config). No hace falta un tema base concreto.
-- **Shell**: aplicar el bloque de fish o de zsh según el shell activo (comprobar con `echo $SHELL`).
+- **LazyVim**: `neovim.lua` in this repo sets these groups with
+  `vim.api.nvim_set_hl(0, "<group>", { fg = "#...", bg = "#...", italic = true })`
+  (via `tokyonight.nvim`'s `on_colors`/`on_highlights` hooks), applied after
+  the base colorscheme loads. No specific base theme is required — the
+  hooks paint over whichever colorscheme they're attached to.
+- **Shell**: apply the fish or zsh block above depending on the active
+  shell (check with `echo $SHELL`). This repo does not ship shell configs
+  directly — these snippets are meant to be copied into the user's own
+  fish/zsh config.

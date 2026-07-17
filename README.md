@@ -5,8 +5,8 @@
 **ONE SURFACE. ONE ACCENT. ZERO NOISE.**
 <br />
 
-[![Repo](https://img.shields.io/badge/REPO-samuhlo%2Fcarbon--vandal-FFCA40?style=for-the-badge&logo=github&logoColor=black)](https://github.com/samuhlo/carbon-vandal)
-[![Type](https://img.shields.io/badge/TYPE-OMARCHY_THEME-0C0011?style=for-the-badge&logoColor=FFCA40)](https://github.com/samuhlo/carbon-vandal)
+[![Repo](https://img.shields.io/badge/REPO-samuhlo%2Fomarchy--carbon--vandal--theme-FFCA40?style=for-the-badge&logo=github&logoColor=black)](https://github.com/samuhlo/omarchy-carbon-vandal-theme)
+[![Type](https://img.shields.io/badge/TYPE-OMARCHY_THEME-0C0011?style=for-the-badge&logoColor=FFCA40)](https://github.com/samuhlo/omarchy-carbon-vandal-theme)
 ![Coverage](https://img.shields.io/badge/COVERAGE-FULL_DESKTOP-737373?style=for-the-badge)
 
   <br />
@@ -29,7 +29,7 @@ ___
 Omarchy installs the theme from the **repository root**. One URL, one command.
 
 ```bash
-omarchy-theme-install https://github.com/samuhlo/carbon-vandal
+omarchy-theme-install https://github.com/samuhlo/omarchy-carbon-vandal-theme
 ```
 
 If you work from a fork, swap the URL. The folder structure must stay exactly as it is — Omarchy reads the files directly from the root.
@@ -38,7 +38,7 @@ To do it from the UI:
 
 1. Press `SUPER + ALT + SPACE`.
 2. **Install** → **Style** → **Theme**.
-3. Paste `https://github.com/samuhlo/carbon-vandal` and confirm with **Enter**.
+3. Paste `https://github.com/samuhlo/omarchy-carbon-vandal-theme` and confirm with **Enter**.
 
 ___
 
@@ -46,15 +46,18 @@ ___
 
 | LAYER                | TECH                                                            | IMPLEMENTATION DETAIL                                                                 |
 | :------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| **Terminal**         | `alacritty.toml`, `kitty.conf`, `ghostty.conf`                  | Base palette only; no per-app overrides.                                              |
+| **Palette source**   | `colors.toml`                                                    | Canonical accent/foreground/background/ANSI palette. Omarchy reads it to auto-theme every app below that doesn't have its own file in this repo — foot, Helix, Obsidian, the `gum` CLI, the Hyprland screenshot share picker, and RGB keyboard lighting. |
+| **Terminal**         | `alacritty.toml`, `kitty.conf`, `ghostty.conf`                  | Full palette including selection, vi-mode cursor, and search-match highlighting — no per-app overrides beyond the shared palette. |
 | **Desktop / UI**     | `waybar.css`, `walker.css`, `mako.ini`, `swayosd.css`, `chromium.theme` | Flat Carbon background, single-accent highlights.                              |
-| **Compositor / Lock**| `hyprland.conf`, `hyprlock.conf`                                | Carbon fills, Industrial Yellow on the focus ring.                                    |
+| **Compositor / Lock**| `hyprland.conf`, `hyprlock.conf`                                | Carbon fills, Industrial Yellow on the focus ring (including grouped/tabbed windows).  |
 | **Editor**           | `neovim.lua`                                                    | LazyVim + Tokyonight override: palette only, `#FFCA40` reserved for focus groups.     |
 | **System**           | `btop.theme`, `icons.theme`                                     | `btop` recoloured to the palette; `icons.theme` stays `Yaru-magenta` for compatibility. |
 
+Each static file in this repo takes priority over what `colors.toml` would generate automatically — Omarchy never overwrites a file the theme already ships. Static files exist here where Carbon Vandal needs more control than a straight palette substitution gives (terminal search-match colors, mako's action-button rules, kitty's tab/border slots); `colors.toml` covers everything else without needing a dedicated file per app.
+
 LazyVim and Tokyonight are **preserved**: the override only applies the palette and limits `#FFCA40` to focus groups — cursor, search, picker, lualine in active mode, warnings, active border.
 
-`icons.theme` points to `Yaru-magenta` for compatibility: renaming it to a fabricated theme can leave the bar without icons on systems that already load Yaru.
+`icons.theme` points to `Yaru-magenta` for compatibility: renaming it to a fabricated theme can leave the bar without icons on systems that already load Yaru. This mirrors every stock Omarchy theme — none ship a custom icon set, they all point at an installed one.
 
 > _note: LazyVim ships Tokyonight. Instead of replacing it, the override paints over its palette. Same plugin graph, fewer surprises._
 
@@ -81,8 +84,8 @@ ___
 
 These are **not** here, on purpose:
 
-- **Logo and previews are placeholders.** `logo.png`, `preview.png`, and `preview/preview-*.png` are placeholders inherited from the source theme `archwave/`. They help visualize the repo tree, **not** the final look. They will be regenerated in a later change; they do not affect the functional theme.
-- **Real screenshots.** They arrive with the first visual validation round, when there is a desktop running the theme.
+- **No `preview.png`, `preview-unlock.png`, or `unlock.png`.** Every stock Omarchy theme ships these for the in-app theme picker's thumbnail. Carbon Vandal doesn't have them yet — the theme installs and works fully without them (`omarchy-theme-install` never requires them), but the picker will show no preview until they're added.
+- **No `vscode.json`.** Every stock theme maps to a real, published VS Code marketplace extension with a matching palette. There is no such extension for Carbon Vandal yet, so VS Code/VSCodium/Cursor simply keep whatever theme they already have when Carbon Vandal is applied, instead of switching automatically.
 
 ___
 

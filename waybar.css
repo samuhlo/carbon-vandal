@@ -1,2 +1,7 @@
+/* Carbon Vandal — Waybar (status bar).
+ * Sets only the two GTK named colors Omarchy's base waybar stylesheet
+ * reads for surface and text; module-specific styling stays in Omarchy's
+ * default waybar config so bar layout isn't duplicated here.
+ */
 @define-color foreground #FAF3F0;
 @define-color background #0C0011;

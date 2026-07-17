@@ -8,10 +8,12 @@ return {
 			on_colors = function(colors)
 				-- Carbon Vandal brand palette override.
 				-- Industrial Yellow (#FFCA40) is the system/focus accent AND
-				-- paints function/call/method/constructor syntax (explicit exception);
-				-- other syntax uses pink/purple/lima/lima suave/mango pastel/coral.
-				-- [BLINDAJE] Cero cian frio y cero azul frio: variantes blue/cyan/teal
-				-- se reducen a verde menta (#8EFA8D) y purpura tipo (#B57EDC).
+				-- paints function/call/method/constructor syntax (an explicit
+				-- exception); every other syntax role uses pink, purple, lime,
+				-- soft lime, or pastel mango instead.
+				-- No cold cyan and no cold blue: every blue/cyan/teal variant
+				-- below is redirected to mint green (#8EFA8D) or type purple
+				-- (#B57EDC).
 				colors.bg = "#0C0011"
 				colors.bg_dark = "#0C0011"
 				colors.bg_highlight = "#1E1025"
@@ -46,11 +48,11 @@ return {
 				colors.red1 = "#E04C4C"
 			end,
 			on_highlights = function(hl, colors)
-				-- [FOCUS] Industrial Yellow is the brand system accent.
-				-- Reserved for cursor, search, picker focus, lualine active mode,
-				-- active borders and warning diagnostics.
-				-- [GUARD] El amarillo vive en UI/system y en funciones (syntax);
-				-- nunca en strings, keywords, tipos o constantes/numeros.
+				-- Industrial Yellow is the brand system accent, reserved for
+				-- cursor, search, picker focus, lualine's active mode, active
+				-- borders, and warning diagnostics — never for syntax roles
+				-- other than the function/call/method/constructor exception
+				-- below (never strings, keywords, types, or constants/numbers).
 				local focus = "#FFCA40"
 				local carbon = "#0C0011"
 				local surface = "#1E1025"
@@ -76,7 +78,7 @@ return {
 				hl.lualine_b_normal = { bg = surface, fg = text }
 				hl.lualine_c_normal = { bg = carbon, fg = "#B57EDC" }
 
-				-- [FOCUS] System accent overrides
+				-- System accent: the surfaces where focus is signaled.
 				hl.Cursor = { fg = focus, bg = carbon }
 				hl.CurSearch = { fg = carbon, bg = focus }
 				hl.Search = { fg = focus, bg = surface }
@@ -84,22 +86,25 @@ return {
 				hl.CursorLineNr = { fg = focus, bg = surface }
 				hl.DiagnosticWarn = { fg = focus, bg = carbon }
 				hl.MatchParen = { fg = focus, bg = carbon }
-				-- [LAYOUT] CursorLine y separadores en carbon elevado, no en amarillo.
+				-- Cursor line and separators stay on elevated Carbon, not yellow —
+				-- the accent marks focus, not layout.
 				hl.CursorLine = { bg = bg_current }
 				hl.WinSeparator = { fg = win_separator }
 				hl.Visual = { bg = selection }
 
-				-- [DATA] Capturas Treesitter y grupos legacy forzados segun theme-specs.md.
-				-- [GUARD] Amarillo (#FFCA40) en UI/system + function/call/method/constructor;
-				-- jamas en strings, keywords, tipos o constantes/numeros.
-				-- Helper local: aplica la misma spec a varios grupos en una sola linea.
+				-- Treesitter captures and legacy highlight groups, forced to the
+				-- roles defined in theme-specs.md. Yellow (#FFCA40) lives in
+				-- UI/system chrome plus function/call/method/constructor syntax;
+				-- it never appears in strings, keywords, types, or
+				-- constants/numbers.
+				-- Local helper: apply the same spec to several groups at once.
 				local function set(groups, spec)
 					for _, g in ipairs(groups) do
 						hl[g] = spec
 					end
 				end
 
-				-- Paleta de sintaxis (reutilizada en cada set).
+				-- Syntax palette, reused by each set() call below.
 				local pink = "#FF99C8"
 				local function_color = "#FFCA40"
 				local purple = "#B57EDC"
@@ -110,7 +115,7 @@ return {
 				local variable = { fg = text }
 				local punct = { fg = punctuation }
 
-				-- Keyword / control: rosa marca.
+				-- Keyword / control flow: brand pink.
 				set({
 					"@keyword", "@keyword.return", "@keyword.function",
 					"@keyword.conditional", "@keyword.repeat", "@keyword.exception",
@@ -119,8 +124,8 @@ return {
 					"Keyword", "Conditional", "Repeat", "Exception", "Operator",
 				}, { fg = pink })
 
-				-- Function / call / method / constructor: amarillo marca
-				-- (excepcion explicita: yellow tambien pinta sintaxis aqui).
+				-- Function / call / method / constructor: brand yellow
+				-- (the explicit exception — yellow also paints syntax here).
 				set({
 					"@function", "@function.call", "@function.method",
 					"@function.method.call", "@function.builtin",
@@ -128,45 +133,46 @@ return {
 					"Function",
 				}, { fg = function_color })
 
-				-- Type / class / interface / enum: purpura tipo.
+				-- Type / class / interface / enum: type purple.
 				set({
 					"@type", "@type.builtin", "@type.definition", "@type.qualifier",
 					"@lsp.type.class", "@lsp.type.interface", "@lsp.type.enum",
 					"Type", "Structure", "Typedef",
 				}, { fg = purple })
 
-				-- String / char: lima suave.
+				-- String / char: soft lime.
 				set({
 					"@string", "@string.special", "@string.regex", "@string.escape",
 					"@character",
 					"String", "Character",
 				}, { fg = string_color })
 
-				-- Number / bool / float / constant: lima.
+				-- Number / bool / float / constant: lime.
 				set({
 					"@number", "@boolean", "@float", "@constant", "@constant.builtin",
 					"Number", "Boolean", "Float", "Constant",
 				}, { fg = number_color })
 
-				-- Property / field / param: mango pastel italic.
+				-- Property / field / param: pastel mango, italic.
 				set({
 					"@property", "@variable.member", "@field", "@variable.parameter",
 					"@lsp.type.property", "@lsp.type.parameter",
 				}, prop)
 
-				-- Variable: blanco base + equivalente LSP util.
+				-- Variable: base text color, plus the LSP-semantic equivalent.
 				set({ "@variable", "@lsp.type.variable" }, variable)
 
-				-- Comment: tenue italic.
+				-- Comment: muted italic.
 				set({ "@comment", "Comment" }, comment)
 
-				-- Punctuation: gris tenue.
+				-- Punctuation: dim gray.
 				set({
 					"@punctuation", "@punctuation.delimiter", "@punctuation.bracket",
 					"@punctuation.special",
 				}, punct)
 
-				-- Identifier base: blanco, evita que fg_dark residual pinte identificadores legacy.
+				-- Base Identifier group, so a residual fg_dark doesn't leak
+				-- through onto legacy (non-Treesitter) identifiers.
 				hl.Identifier = { fg = text }
 			end,
 		},

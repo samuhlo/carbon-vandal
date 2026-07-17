@@ -3,36 +3,52 @@
 background = '#0C0011'
 foreground = '#FAF3F0'
 
-# ANSI green/blue remap to Industrial Yellow (#FFCA40) so Omarchy startup
-# logos and tmux selectors — which read those slots — show the brand accent.
-# ANSI cyan slots (normal/bright) are remapped to function green (#8EFA8D)
-# to comply with the no-cold-cyan contract from theme-specs.md.
-# [FIX] green/blue -> yellow; cyan/lavender -> function green / type purple.
-
-[colors.normal]
-black   = "#1E1025"   # elevated surface
-red     = "#E04C4C"   # error
-green   = "#FFCA40"   # system accent (ANSI green -> yellow, selector focus)
-yellow  = "#FFCA40"   # system accent
-blue    = "#FFCA40"   # system accent (ANSI blue -> yellow, selector focus)
-magenta = "#FF99C8"   # keyword pink
-cyan    = "#8EFA8D"   # function/command/success (was cold cyan)
-white   = "#FAF3F0"   # foreground
-
-[colors.bright]
-black   = "#737373"   # invisibles / structure
-red     = "#F5735A"   # property / param / flag
-green   = "#C8FF36"   # number / bool / const
-yellow  = "#C8FF36"   # number / bool / const
-blue    = "#B57EDC"   # type (was lavender)
-magenta = "#FF99C8"   # keyword pink
-cyan    = "#8EFA8D"   # function/command/success (was cold cyan)
-white   = "#FAF3F0"   # foreground (was pure white #FFFFFF)
-
 [colors.cursor]
 text   = "#0C0011"
 cursor = "#FFCA40"
 
+[colors.vi_mode_cursor]
+text   = "#0C0011"
+cursor = "#FFCA40"
+
+[colors.search.matches]
+foreground = "#0C0011"
+background = "#FFCA40"
+
+[colors.search.focused_match]
+foreground = "#0C0011"
+background = "#E04C4C"
+
+[colors.footer_bar]
+foreground = "#0C0011"
+background = "#FAF3F0"
+
 [colors.selection]
 text = "#0C0011"
 background = "#FFCA40"
+
+# ANSI normal (0-7). Green, yellow, and blue all resolve to Industrial
+# Yellow: several terminal UIs — the Omarchy startup logo, tmux selectors —
+# render focus through those specific slots, so leaving them at stock
+# green/olive/blue would make the logo and selectors read the wrong color
+# on this theme. Cyan carries function/success green instead of a cold
+# cyan, per the no-cold-color rule in theme-specs.md.
+[colors.normal]
+black   = "#1E1025"   # elevated surface
+red     = "#E04C4C"   # error
+green   = "#FFCA40"   # system accent
+yellow  = "#FFCA40"   # system accent
+blue    = "#FFCA40"   # system accent
+magenta = "#FF99C8"   # keyword pink
+cyan    = "#8EFA8D"   # function / success green
+white   = "#FAF3F0"   # foreground
+
+[colors.bright]
+black   = "#737373"   # structure gray
+red     = "#F5735A"   # property / param / flag
+green   = "#C8FF36"   # number / bool / const
+yellow  = "#C8FF36"   # number / bool / const
+blue    = "#B57EDC"   # type purple
+magenta = "#FF99C8"   # keyword pink
+cyan    = "#8EFA8D"   # function / success green
+white   = "#FAF3F0"   # foreground

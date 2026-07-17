@@ -1,3 +1,9 @@
+/* Carbon Vandal — Walker (app launcher).
+ * `background` is the elevated surface so the launcher panel sits a
+ * shade above the desktop; `base` is Carbon proper for the search input.
+ * `selected-text` and `border` both use the Industrial Yellow system
+ * accent to mark the focused entry.
+ */
 @define-color selected-text #FFCA40;
 @define-color text #FAF3F0;
 @define-color base #0C0011;

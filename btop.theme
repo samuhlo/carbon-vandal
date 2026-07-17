@@ -1,13 +1,11 @@
-# Carbon Vandal — btop theme
+# Carbon Vandal — btop theme.
 # Background: Carbon #0C0011. Text: Concrete White #FAF3F0.
-# Focus: Industrial Yellow #FFCA40. Selection: Industrial Yellow #FFCA40 on Carbon text.
+# Focus: Industrial Yellow #FFCA40 — box outlines, titles, and selection
+# all read as the single system accent so nothing but focus stands out.
 # Inactive/structure: Structure Gray #737373.
-# Gradients are grouped by state family, not by hue palette.
-# [FIX] Selection and box outlines moved off muted purple so focus surfaces
-# stay yellow-first. Cold cyan/blue gradient stops are remapped to
-# function green (#8EFA8D) and type purple (#B57EDC); orange stops are
-# remapped to peach (#F5735A); muted-red stops to keyword pink (#FF99C8).
-# All stops now live inside the Carbon Vandal palette (theme-specs.md).
+# Gradients are grouped by state family (cool/neutral/warm), not by hue,
+# and every stop is drawn from the Carbon Vandal palette in
+# theme-specs.md — no cold blue or cyan appears anywhere below.
 
 # Main background
 theme[main_bg]="#0C0011"
@@ -32,6 +30,9 @@ theme[inactive_fg]="#737373"
 
 # Color of text appearing on top of graphs
 theme[graph_text]="#FAF3F0"
+
+# Background color of the percentage meters
+theme[meter_bg]="#1E1025"
 
 # Misc colors for processes box
 theme[proc_misc]="#737373"
